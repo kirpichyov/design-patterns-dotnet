@@ -20,7 +20,7 @@ public class AuthHandler : HttpRequestHandler
             request.SetResponse(HttpStatusCode.Unauthorized, "Auth failed", "text/plain");
         }
         
-        return base?.Handle(request);
+        return base.Handle(request);
     }
 
     private bool ValidateHeader(string value)
