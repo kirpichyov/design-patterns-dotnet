@@ -4,14 +4,18 @@ namespace DesignPatterns.Decorator;
 
 public class Usage
 {
-    public static void Main()
+    public static async Task Main()
     {
-        const string data = "This is data.";
-        
-        var file = new FileDataSource("C:/some-file.txt");
+        var file = new FileDataSource("C:/some-file.txt", "");
         var encryptedFile = new EncryptionDecorator(file);
         var encryptedCompressedFile = new CompressionDecorator(encryptedFile);
 
-        encryptedCompressedFile.WriteData(data);
+        Console.WriteLine(file.Content);
+        
+        await encryptedCompressedFile.WriteData("this is file data!");
+        Console.WriteLine(file.Content);
+
+        var read = await encryptedCompressedFile.ReadData();
+        Console.WriteLine(read);
     }
 }
