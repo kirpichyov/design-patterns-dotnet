@@ -56,14 +56,14 @@ public class Program
     
     public static void Main()
     {
-        var oakType = TreeFactory.GetTreeType("Oak", "Green");
-        var oldOakType = TreeFactory.GetTreeType("Oak", "Brown");
+        var oakType = TreeFactory.GetTreeType("Oak", "Brown");
+        var oldOakType = TreeFactory.GetTreeType("Birch", "White");
         var palmType = TreeFactory.GetTreeType("Palm", "Green");
 
-        var treeTypes = new[] { oakType, oldOakType };
+        var treeTypes = new[] { oakType, oldOakType, palmType };
 
         var trees = Enumerable.Range(1, 9999)
-            .Select(_ => new Tree(Faker.PickRandom(treeTypes), x: Faker.Random.Int(), y: Faker.Random.Int()));
+            .Select(_ => new Tree(treeTypes[Random.Shared.Next(0, treeTypes.Length)], x: Faker.Random.Int(), y: Faker.Random.Int()));
 
         foreach (var tree in trees)
         {
