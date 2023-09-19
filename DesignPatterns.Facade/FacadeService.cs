@@ -69,7 +69,7 @@ public class FacadeService
                 .Select(order => _mapper.ToOrderModel(order)).ToArray(); 
         }
 
-        _logger.LogError("Unable to retrieve orders for user {UserId} .", userId);
+        _logger.LogError("Unable to retrieve orders for user {0} .", userId);
         return Array.Empty<OrderModel>();
     }
 }

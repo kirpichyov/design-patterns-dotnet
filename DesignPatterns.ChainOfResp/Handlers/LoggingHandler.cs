@@ -6,14 +6,14 @@ public class LoggingHandler : HttpRequestHandler
 {
     private readonly ILogger _logger;
     
-    public LoggingHandler(IHttpRequestHandler httpRequestHandler, ILogger logger) : base(httpRequestHandler)
+    public LoggingHandler(ILogger logger, IHttpRequestHandler httpRequestHandler = null) : base(httpRequestHandler)
     {
         _logger = logger;
     }
 
     public override HttpRequest Handle(HttpRequest request)
     {
-        _logger.LogInformation("Request from IP {Ip}", request.Ip.ToString());
+        _logger.LogInformation("Request from IP {0}", request.Ip.ToString());
         return base.Handle(request);
     }
 }

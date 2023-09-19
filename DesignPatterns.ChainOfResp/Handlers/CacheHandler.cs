@@ -7,7 +7,7 @@ public class CacheHandler : HttpRequestHandler
 {
     private readonly ICacheService _cacheService;
     
-    public CacheHandler(IHttpRequestHandler httpRequestHandler, ICacheService cacheService) : base(httpRequestHandler)
+    public CacheHandler(ICacheService cacheService, IHttpRequestHandler httpRequestHandler = null) : base(httpRequestHandler)
     {
         _cacheService = cacheService;
     }
@@ -16,7 +16,7 @@ public class CacheHandler : HttpRequestHandler
     {
         var cache = _cacheService.TryGetAsync<string>($"endpoints-{request.RequestedPath}").GetAwaiter().GetResult();
         
-        if (cache is not null)
+        if (!string.IsNullOrEmpty(cache))
         {
             request.SetResponse(HttpStatusCode.OK, cache, "application/json");
         }

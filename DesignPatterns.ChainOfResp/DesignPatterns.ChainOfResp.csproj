@@ -4,11 +4,17 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
 
     <ItemGroup>
       <ProjectReference Include="..\DesignPatterns.Common\DesignPatterns.Common.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="FakeItEasy" Version="7.4.0" />
     </ItemGroup>
 
 </Project>

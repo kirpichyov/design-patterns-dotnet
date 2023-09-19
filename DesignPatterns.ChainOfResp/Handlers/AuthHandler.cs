@@ -4,7 +4,7 @@ namespace DesignPatterns.ChainOfResp.Handlers;
 
 public class AuthHandler : HttpRequestHandler
 {
-    public AuthHandler(IHttpRequestHandler httpRequestHandler) : base(httpRequestHandler)
+    public AuthHandler(IHttpRequestHandler httpRequestHandler = null) : base(httpRequestHandler)
     {
     }
 
